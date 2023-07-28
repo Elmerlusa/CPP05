@@ -11,57 +11,64 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include <stdexcept>
+#include "Form.hpp"
 
 int	main(void)
 {
 	try
 	{
-		Bureaucrat	b1("El Nano", 0);
+		Form		f("NanoForm", 0, 30);
 	}
 	catch (std::exception& e)
 	{
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
+	std::cout << "--------------------------------------------------" << std::endl;
 	try
 	{
-		Bureaucrat	b1("El Nano", 160);
+		Form		f("NanoForm", 10, 160);
 	}
 	catch (std::exception& e)
 	{
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
+	std::cout << "--------------------------------------------------" << std::endl;
 	try
 	{
-		Bureaucrat	b1("El Nano", 1);
+		Bureaucrat	b("El Nano", 20);
+		Form		f("NanoForm", 20, 30);
 
-		std::cout << b1 << std::endl;
-		b1.incrementGrade();
+		std::cout << b << std::endl << f << std::endl;
+		b.signForm(f);
+		std::cout << f << std::endl;
 	}
 	catch (std::exception& e)
 	{
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
+	std::cout << "--------------------------------------------------" << std::endl;
 	try
 	{
-		Bureaucrat	b1("El Nano", 150);
+		Bureaucrat	b("El Nano", 20);
+		Form		f("NanoForm", 21, 30);
 
-		std::cout << b1 << std::endl;
-		b1.decrementGrade();
+		std::cout << f << std::endl;
+		b.signForm(f);
+		std::cout << f << std::endl;
 	}
 	catch (std::exception& e)
 	{
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
+	std::cout << "--------------------------------------------------" << std::endl;
 	try
 	{
-		Bureaucrat	b1("El Nano", 10);
+		Bureaucrat	b("El Nano", 20);
+		Form		f("NanoForm", 19, 30);
 
-		std::cout << b1 << std::endl;
-		b1.incrementGrade();
-		std::cout << b1 << std::endl;
-		b1.decrementGrade();
-		std::cout << b1 << std::endl;
+		std::cout << f << std::endl;
+		b.signForm(f);
+		std::cout << f << std::endl;
 	}
 	catch (std::exception& e)
 	{

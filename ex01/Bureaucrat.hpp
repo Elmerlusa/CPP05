@@ -17,8 +17,12 @@
 # include <string>
 # include <stdexcept>
 
+#include "Form.hpp"
+
 # define MAX_GRADE 1
 # define MIN_GRADE 150
+
+class	Form;
 
 class	Bureaucrat
 {
@@ -34,6 +38,8 @@ class	Bureaucrat
 
 		void	incrementGrade(void);
 		void	decrementGrade(void);
+
+		void	signForm(Form& form) const;
 
 		class	GradeTooHighException: public std::exception
 		{

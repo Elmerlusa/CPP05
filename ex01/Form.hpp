@@ -22,6 +22,8 @@
 # define MAX_GRADE 1
 # define MIN_GRADE 150
 
+class	Bureaucrat;
+
 class	Form
 {
 	private:
@@ -30,15 +32,15 @@ class	Form
 		const int			_signGrade;
 		const int			_execGrade;
 	public:
-		Form(std::string name, const int signGrade, const int execGrade);
+		Form(std::string name, int signGrade, int execGrade);
 		~Form(void);
 
-		const std::string	getName(void) const;
-		bool				getSigned(void) const;
-		const int			getSignGrade(void) const;
-		const int			getExecGrade(void) const;
+		std::string	getName(void) const;
+		bool		getSigned(void) const;
+		int			getSignGrade(void) const;
+		int			getExecGrade(void) const;
 
-		void	beSigned(void);
+		void	beSigned(const Bureaucrat& bureaucrat);
 
 		class	GradeTooHighException: public std::exception
 		{
@@ -49,7 +51,7 @@ class	Form
 		{
 			virtual const char*	what(void) const throw();
 		};
-}
+};
 
 std::ostream&	operator<<(std::ostream& ostr, const Form& form);
 

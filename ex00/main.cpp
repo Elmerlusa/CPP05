@@ -23,14 +23,16 @@ int	main(void)
 	{
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
+	std::cout << "--------------------------------------------------" << std::endl;
 	try
 	{
-		Bureaucrat	b1("El Nano", 160);
+		Bureaucrat	b1("El Nano", 151);
 	}
 	catch (std::exception& e)
 	{
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
+	std::cout << "--------------------------------------------------" << std::endl;
 	try
 	{
 		Bureaucrat	b1("El Nano", 1);
@@ -42,6 +44,7 @@ int	main(void)
 	{
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
+	std::cout << "--------------------------------------------------" << std::endl;
 	try
 	{
 		Bureaucrat	b1("El Nano", 150);
@@ -53,6 +56,7 @@ int	main(void)
 	{
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
+	std::cout << "--------------------------------------------------" << std::endl;
 	try
 	{
 		Bureaucrat	b1("El Nano", 10);

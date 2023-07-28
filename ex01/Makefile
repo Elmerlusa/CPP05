@@ -15,7 +15,7 @@ NAME = bureaucrat
 CPP = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-CPPF = main.cpp Bureaucrat.cpp
+CPPF = main.cpp Bureaucrat.cpp Form.cpp
 CPPO = ${CPPF:.cpp=.o}
 
 RM = rm -rf
