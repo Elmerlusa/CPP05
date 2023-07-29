@@ -17,12 +17,9 @@
 # include <iostream>
 
 # include "AForm.hpp"
-
-typedef struct s_forms
-{
-	std::string	name;
-	AForm*		form;
-}	t_forms;
+# include "ShrubberyCreationForm.hpp"
+# include "RobotomyRequestForm.hpp"
+# include "PresidentialPardonForm.hpp"
 
 class	Intern
 {
@@ -31,6 +28,13 @@ class	Intern
 		~Intern(void);
 
 		AForm*	makeForm(std::string formName, std::string target);
+	
+	private:
+		typedef struct s_form_map
+		{
+			std::string	name;
+			AForm*		form;
+		}	t_form_map;
 };
 
 #endif

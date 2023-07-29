@@ -33,7 +33,7 @@ class	AForm
 		const int			_execGrade;
 	public:
 		AForm(std::string name, int signGrade, int execGrade);
-		~AForm(void);
+		virtual	~AForm(void);
 
 		std::string	getName(void) const;
 		bool		getSigned(void) const;

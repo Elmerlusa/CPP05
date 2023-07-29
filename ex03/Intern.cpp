@@ -22,21 +22,20 @@ Intern::~Intern(void)
 
 AForm*	Intern::makeForm(std::string formName, std::string target)
 {
-	t_forms	forms[] = {
-		{"shrubbery creation", new ShruberryCreationForm(target)},
+	t_form_map	forms[] = {
+		{"shrubbery creation", new ShrubberyCreationForm(target)},
 		{"robotomy request", new RobotomyRequestForm(target)},
 		{"presidential pardon", new PresidentialPardonForm(target)},
 		{"", NULL}
 	};
-	int		forms_len = end(forms) - begin(forms);
-	AForm	*form = NULL;
+	AForm*	form = NULL;
 
-	for (int i = 0; i < forms_len; i++)
+	for (int i = 0; forms[i].form != NULL; i++)
 	{
-		if (strcmp(formName, forms[i].name) == 0)
+		if (formName.compare(forms[i].name) == 0)
 			form = forms[i].form;
-		else
-			delete forms[i].form;
+		// else
+		// 	delete forms[i].form;
 	}
 	if (form == NULL)
 		std::cout << "Any " << formName << " exists" << std::endl;

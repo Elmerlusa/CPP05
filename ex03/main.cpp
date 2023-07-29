@@ -14,53 +14,42 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int	main(void)
 {
-	try
-	{
-		Bureaucrat				b("El Nano", 100);
-		Bureaucrat				b2("Yo", 140);
-		ShrubberyCreationForm	s("home");
-		
-		std::cout << b << std::endl << b2 << std::endl;
-		b.signForm(s);
-		b.executeForm(s);
-		std::cout << s << std::endl;
-		b2.executeForm(s);
-	}
-	catch (std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	Intern	i;
+	AForm*	form1;
+	AForm*	form2;
+	AForm*	form3;
+	Bureaucrat	b("ElNano", 1);
+
+	form1 = i.makeForm(":)", ":)");
+	std::cout << form1 << std::endl;
 	std::cout << "--------------------------------------------------" << std::endl;
-	try
+	form1 = i.makeForm("shrubbery creation", "Home");
+	if (form1 != NULL)
 	{
-		Bureaucrat				b("El Nano", 40);
-		Bureaucrat				b2("Yo", 46);
-		RobotomyRequestForm		s("home");
-		
-		std::cout << b << std::endl << b2 << std::endl << s << std::endl;
-		b.executeForm(s);
-		b2.executeForm(s);
+		b.signForm(*form1);
+		b.executeForm(*form1);
+		std::cout << *form1 << std::endl;
 	}
-	catch (std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	// delete form1;
 	std::cout << "--------------------------------------------------" << std::endl;
-	try
+	form2 = i.makeForm("robotomy request", "Bender");
+	if (form2 != NULL)
 	{
-		Bureaucrat				b("El Nano", 5);
-		Bureaucrat				b2("Yo", 6);
-		PresidentialPardonForm	s("home");
-		
-		std::cout << b << std::endl << b2 << std::endl << s << std::endl;
-		b.executeForm(s);
-		b2.executeForm(s);
+		b.signForm(*form2);
+		b.executeForm(*form2);
+		std::cout << *form2 << std::endl;
 	}
-	catch (std::exception& e)
+	// delete form2;
+	std::cout << "--------------------------------------------------" << std::endl;
+	form3 = i.makeForm("presidential pardon", "YES");
+	if (form3 != NULL)
 	{
-		std::cout << e.what() << std::endl;
+		b.executeForm(*form3);
+		std::cout << *form3 << std::endl;
 	}
+	// delete form3;
 }
