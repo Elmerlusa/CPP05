@@ -63,6 +63,7 @@ int	main(void)
 
 		std::cout << b1 << std::endl;
 		b1.incrementGrade();
+		b1.incrementGrade();
 		std::cout << b1 << std::endl;
 		b1.decrementGrade();
 		std::cout << b1 << std::endl;
