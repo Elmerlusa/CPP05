@@ -68,7 +68,6 @@ int	main(void)
 
 		std::cout << f << std::endl;
 		b.signForm(f);
-		std::cout << f << std::endl;
 	}
 	catch (std::exception& e)
 	{
