@@ -25,7 +25,6 @@ int	main(void)
 	Bureaucrat	b("ElNano", 1);
 
 	form1 = i.makeForm(":)", ":)");
-	std::cout << form1 << std::endl;
 	std::cout << "--------------------------------------------------" << std::endl;
 	form1 = i.makeForm("shrubbery creation", "Home");
 	if (form1 != NULL)
@@ -34,7 +33,7 @@ int	main(void)
 		b.executeForm(*form1);
 		std::cout << *form1 << std::endl;
 	}
-	// delete form1;
+	delete form1;
 	std::cout << "--------------------------------------------------" << std::endl;
 	form2 = i.makeForm("robotomy request", "Bender");
 	if (form2 != NULL)
@@ -43,7 +42,7 @@ int	main(void)
 		b.executeForm(*form2);
 		std::cout << *form2 << std::endl;
 	}
-	// delete form2;
+	delete form2;
 	std::cout << "--------------------------------------------------" << std::endl;
 	form3 = i.makeForm("presidential pardon", "YES");
 	if (form3 != NULL)
@@ -51,5 +50,5 @@ int	main(void)
 		b.executeForm(*form3);
 		std::cout << *form3 << std::endl;
 	}
-	// delete form3;
+	delete form3;
 }

@@ -27,14 +27,17 @@ class	Intern
 		Intern(void);
 		~Intern(void);
 
-		AForm*	makeForm(std::string formName, std::string target);
-	
+		AForm*	makeForm(std::string formName, std::string target) const;
 	private:
 		typedef struct s_form_map
 		{
 			std::string	name;
-			AForm*		form;
+			AForm*		(*f)(std::string);
 		}	t_form_map;
+		
+		// AForm*	createShrubberyForm(std::string target);
+		// AForm*	createRobotomyForm(std::string target);
+		// AForm*	createPresidentialForm(std::string target);
 };
 
 #endif

@@ -20,26 +20,39 @@ Intern::~Intern(void)
 {
 }
 
-AForm*	Intern::makeForm(std::string formName, std::string target)
+
+AForm*	createShrubberyForm(std::string target)
+{
+	return new ShrubberyCreationForm(target);
+}
+
+AForm*	createRobotomyForm(std::string target)
+{
+	return new RobotomyRequestForm(target);
+}
+
+AForm*	createPresidentialForm(std::string target)
+{
+	return new PresidentialPardonForm(target);
+}
+
+AForm*	Intern::makeForm(std::string formName, std::string target) const
 {
 	t_form_map	forms[] = {
-		{"shrubbery creation", new ShrubberyCreationForm(target)},
-		{"robotomy request", new RobotomyRequestForm(target)},
-		{"presidential pardon", new PresidentialPardonForm(target)},
+		{"shrubbery creation", &createShrubberyForm},
+		{"robotomy request", &createRobotomyForm},
+		{"presidential pardon", &createPresidentialForm},
 		{"", NULL}
 	};
-	AForm*	form = NULL;
 
-	for (int i = 0; forms[i].form != NULL; i++)
+	for (int i = 0; forms[i].f != NULL; i++)
 	{
 		if (formName.compare(forms[i].name) == 0)
-			form = forms[i].form;
-		// else
-		// 	delete forms[i].form;
+		{
+			std::cout << "Intern creates " << formName << std::endl;
+			return forms[i].f(target);
+		}
 	}
-	if (form == NULL)
-		std::cout << "Any " << formName << " exists" << std::endl;
-	else
-		std::cout << "Intern creates " << formName << std::endl;
-	return form;
+	std::cout << "Any " << formName << " exists" << std::endl;
+	return NULL;
 }
