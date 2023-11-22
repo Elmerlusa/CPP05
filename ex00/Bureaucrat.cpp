@@ -12,7 +12,15 @@
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
+Bureaucrat::Bureaucrat(void): _name("DefaultName"), _grade(MIN_GRADE)
+{
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat& bureaucrat): _name(bureaucrat.getName()), _grade(bureaucrat.getGrade())
+{
+}
+
+Bureaucrat::Bureaucrat(const std::string& name, const int& grade): _name(name)
 {
 	std::cout << "New grade " << grade << std::endl;
 	if (grade < MAX_GRADE)
@@ -28,12 +36,12 @@ Bureaucrat::~Bureaucrat(void)
 	std::cout << "Bureaucrat " << this->_name << " destructed" << std::endl;
 }
 
-std::string	Bureaucrat::getName(void) const
+const std::string&	Bureaucrat::getName(void) const
 {
 	return this->_name;
 }
 
-int	Bureaucrat::getGrade(void) const
+const int&	Bureaucrat::getGrade(void) const
 {
 	return this->_grade;
 }
@@ -52,6 +60,16 @@ void	Bureaucrat::decrementGrade(void)
 	if (this->_grade + 1 > MIN_GRADE)
 		throw GradeTooLowException();
 	this->_grade = this->_grade + 1;
+}
+
+Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& bureaucrat)
+{
+	if (this != &bureaucrat)
+	{
+		this->_name = bureaucrat.getName();
+		this->_grade = bureaucrat.getGrade();
+	}
+	return *this;
 }
 
 const char*	Bureaucrat::GradeTooHighException::what(void) const throw()

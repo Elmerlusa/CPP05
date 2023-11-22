@@ -31,16 +31,21 @@ class	Form
 		bool				_signed;
 		const int			_signGrade;
 		const int			_execGrade;
+
+		Form(void);
 	public:
-		Form(std::string name, int signGrade, int execGrade);
+		Form(const Form& form);
+		Form(const std::string& name, const int& signGrade, const int& execGrade);
 		~Form(void);
 
-		std::string	getName(void) const;
-		bool		getSigned(void) const;
-		int			getSignGrade(void) const;
-		int			getExecGrade(void) const;
+		const std::string&	getName(void) const;
+		const bool&			getSigned(void) const;
+		const int&			getSignGrade(void) const;
+		const int&			getExecGrade(void) const;
 
 		void	beSigned(const Bureaucrat& bureaucrat);
+
+		Form&	operator=(const Form& form);
 
 		class	GradeTooHighException: public std::exception
 		{

@@ -38,7 +38,7 @@ int	main(void)
 		Bureaucrat	b("El Nano", 20);
 		Form		f("NanoForm", 20, 30);
 
-		std::cout << b << std::endl << f << std::endl;
+		std::cout << b << "\n" << f << std::endl;
 		b.signForm(f);
 		std::cout << f << std::endl;
 	}
