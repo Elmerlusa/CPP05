@@ -19,11 +19,18 @@ class	PresidentialPardonForm: public AForm
 {
 	private:
 		std::string	_target;
+
+		PresidentialPardonForm(void);
 	public:
-		PresidentialPardonForm(std::string target);
+		PresidentialPardonForm(const PresidentialPardonForm& presidentialPardonForm);
+		PresidentialPardonForm(const std::string& target);
 		~PresidentialPardonForm(void);
 
+		const std::string&	getTarget(void) const;
+
 		void	realExecute(void) const;
+
+		PresidentialPardonForm&	operator=(const PresidentialPardonForm& presidentialPardonForm);
 };
 
 #endif

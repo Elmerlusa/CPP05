@@ -14,7 +14,16 @@
 
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target):
+ShrubberyCreationForm::ShrubberyCreationForm(void): AForm("DefaultName", MIN_GRADE, MIN_GRADE), _target("nobody")
+{
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& shrubberyCreationForm):
+	AForm(shrubberyCreationForm.getName(), shrubberyCreationForm.getSignGrade(), shrubberyCreationForm.getExecGrade()), _target(shrubberyCreationForm.getTarget())
+{
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target):
 	AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {
 }
@@ -23,39 +32,52 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {
 }
 
+const std::string&	ShrubberyCreationForm::getTarget(void) const
+{
+	return this->_target;
+}
+
 void	ShrubberyCreationForm::realExecute(void) const
 {
 	std::ofstream	os((this->_target + "_shrubbery").c_str(), std::ios::out);
 
 	if (os.is_open())
 	{
-		os 	<<	"(E)" << std::endl
-			<<	"  `--(E+T)" << std::endl
-			<<  "        `--(E)" << std::endl
-			<<  "      |      `--(E+T)" << std::endl
-			<<  "      |       `--(E)" << std::endl
-			<<  "      |       |   `--(E+T)" << std::endl
-			<<  "      |       |       `--(E)" << std::endl
-			<<  "      |       |       |   `--(T)" << std::endl
-			<<  "      |       |       |       `--[a]" << std::endl
-			<<  "      |       |       `--[+]" << std::endl
-			<<  "      |       |       `--(T)" << std::endl
-			<<  "      |       |           `--(T*a)" << std::endl
-			<<  "      |       |               `--(T)" << std::endl
-			<<  "      |       |               |   `--(T*a)" << std::endl
-			<<  "      |       |               |       `--(T)" << std::endl
-			<<  "      |       |               |       |   `--[a]" << std::endl
-			<<  "      |       |               |       `--[*]" << std::endl
-			<<  "      |       |               |       `--[a]" << std::endl
-			<<  "      |       |               `--[*]" << std::endl
-			<<  "      |       |               `--[a]" << std::endl
-			<<  "      |       `--[+]" << std::endl
-			<<  "      |       `--(T)" << std::endl
-			<<  "      |           `--[a]" << std::endl
-			<<  "      `--[+]" << std::endl
-			<<  "      `--(T)" << std::endl
+		os 	<<	"(E)\n"
+			<<	"  `--(E+T)\n"
+			<<  "        `--(E)\n"
+			<<  "      |      `--(E+T)\n"
+			<<  "      |       `--(E)\n"
+			<<  "      |       |   `--(E+T)\n"
+			<<  "      |       |       `--(E)\n"
+			<<  "      |       |       |   `--(T)\n"
+			<<  "      |       |       |       `--[a]\n"
+			<<  "      |       |       `--[+]\n"
+			<<  "      |       |       `--(T)\n"
+			<<  "      |       |           `--(T*a)\n"
+			<<  "      |       |               `--(T)\n"
+			<<  "      |       |               |   `--(T*a)\n"
+			<<  "      |       |               |       `--(T)\n"
+			<<  "      |       |               |       |   `--[a]\n"
+			<<  "      |       |               |       `--[*]\n"
+			<<  "      |       |               |       `--[a]\n"
+			<<  "      |       |               `--[*]\n"
+			<<  "      |       |               `--[a]\n"
+			<<  "      |       `--[+]\n"
+			<<  "      |       `--(T)\n"
+			<<  "      |           `--[a]\n"
+			<<  "      `--[+]\n"
+			<<  "      `--(T)\n"
 			<<  "          `--[a]" << std::endl;
 		if (os.bad())
 			std::cout << "Couldn't write file" << std::endl;
+		os.close();
 	}
+}
+
+ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm& shrubberyCreationForm)
+{
+	if (this != &shrubberyCreationForm)
+		std::cout << "Assignment operation is impossible: const values of base class cannot be overwritten" << std::endl;
+	return *this;
 }

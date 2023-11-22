@@ -1,5 +1,6 @@
 bureaucrat
 *_shrubbery
+*.json
 
 # Prerequisites
 *.d

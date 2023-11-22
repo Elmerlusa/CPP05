@@ -43,6 +43,9 @@ int	main(void)
 		std::cout << b << std::endl << b2 << std::endl << s << std::endl;
 		b.executeForm(s);
 		b2.executeForm(s);
+		b.signForm(s);
+		b.executeForm(s);
+		b2.executeForm(s);
 	}
 	catch (std::exception& e)
 	{
@@ -56,6 +59,7 @@ int	main(void)
 		PresidentialPardonForm	s("home");
 		
 		std::cout << b << std::endl << b2 << std::endl << s << std::endl;
+		b.signForm(s);
 		b.executeForm(s);
 		b2.executeForm(s);
 	}

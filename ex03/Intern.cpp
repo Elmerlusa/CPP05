@@ -16,43 +16,49 @@ Intern::Intern(void)
 {
 }
 
+Intern::Intern(const Intern& intern)
+{
+	(void) intern;
+}
+
 Intern::~Intern(void)
 {
 }
 
-
-AForm*	createShrubberyForm(std::string target)
+AForm*	Intern::createShrubberyForm(const std::string& target) const
 {
 	return new ShrubberyCreationForm(target);
 }
 
-AForm*	createRobotomyForm(std::string target)
+AForm*	Intern::createRobotomyForm(const std::string& target) const
 {
 	return new RobotomyRequestForm(target);
 }
 
-AForm*	createPresidentialForm(std::string target)
+AForm*	Intern::createPresidentialForm(const std::string& target) const
 {
 	return new PresidentialPardonForm(target);
 }
 
-AForm*	Intern::makeForm(std::string formName, std::string target) const
+AForm*	Intern::makeForm(const std::string& formName, const std::string& target) const
 {
-	t_form_map	forms[] = {
-		{"shrubbery creation", &createShrubberyForm},
-		{"robotomy request", &createRobotomyForm},
-		{"presidential pardon", &createPresidentialForm},
-		{"", NULL}
-	};
+	std::string	formNames[] = {"shrubbery creation", "robotomy request", "presidential pardon", ""};
+	AForm*		(Intern::*createForm[])(const std::string& target) const = {&Intern::createShrubberyForm, &Intern::createRobotomyForm, &Intern::createPresidentialForm, NULL};
 
-	for (int i = 0; forms[i].f != NULL; i++)
+	for (int i = 0; formNames[i].empty() == false; i++)
 	{
-		if (formName.compare(forms[i].name) == 0)
+		if (formName.compare(formNames[i]) == 0)
 		{
 			std::cout << "Intern creates " << formName << std::endl;
-			return forms[i].f(target);
+			return (this->*createForm[i])(target);
 		}
 	}
-	std::cout << "Any " << formName << " exists" << std::endl;
+	std::cout << "Any form called " << formName << " exists" << std::endl;
 	return NULL;
+}
+
+Intern&	Intern::operator=(const Intern& intern)
+{
+	(void) intern;
+	return *this;
 }

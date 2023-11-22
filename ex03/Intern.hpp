@@ -23,21 +23,18 @@
 
 class	Intern
 {
+	private:
+		AForm*	createShrubberyForm(const std::string& target) const;
+		AForm*	createRobotomyForm(const std::string& target) const;
+		AForm*	createPresidentialForm(const std::string& target) const;
 	public:
 		Intern(void);
+		Intern(const Intern& intern);
 		~Intern(void);
 
-		AForm*	makeForm(std::string formName, std::string target) const;
-	private:
-		typedef struct s_form_map
-		{
-			std::string	name;
-			AForm*		(*f)(std::string);
-		}	t_form_map;
-		
-		// AForm*	createShrubberyForm(std::string target);
-		// AForm*	createRobotomyForm(std::string target);
-		// AForm*	createPresidentialForm(std::string target);
+		AForm*	makeForm(const std::string& formName, const std::string& target) const;
+
+		Intern&	operator=(const Intern& intern);
 };
 
 #endif

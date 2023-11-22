@@ -19,36 +19,36 @@
 int	main(void)
 {
 	Intern	i;
-	AForm*	form1;
-	AForm*	form2;
-	AForm*	form3;
+	AForm*	form;
 	Bureaucrat	b("ElNano", 1);
 
-	form1 = i.makeForm(":)", ":)");
+	form = i.makeForm(":)", ":)");
 	std::cout << "--------------------------------------------------" << std::endl;
-	form1 = i.makeForm("shrubbery creation", "Home");
-	if (form1 != NULL)
+	form = i.makeForm("shrubbery creation", "Home");
+	if (form != NULL)
 	{
-		b.signForm(*form1);
-		b.executeForm(*form1);
-		std::cout << *form1 << std::endl;
+		b.signForm(*form);
+		b.executeForm(*form);
+		std::cout << *form << std::endl;
 	}
-	delete form1;
+	delete form;
 	std::cout << "--------------------------------------------------" << std::endl;
-	form2 = i.makeForm("robotomy request", "Bender");
-	if (form2 != NULL)
+	form = i.makeForm("robotomy request", "Bender");
+	if (form != NULL)
 	{
-		b.signForm(*form2);
-		b.executeForm(*form2);
-		std::cout << *form2 << std::endl;
+		b.signForm(*form);
+		b.executeForm(*form);
+		std::cout << *form << std::endl;
 	}
-	delete form2;
+	delete form;
 	std::cout << "--------------------------------------------------" << std::endl;
-	form3 = i.makeForm("presidential pardon", "YES");
-	if (form3 != NULL)
+	form = i.makeForm("presidential pardon", "YES");
+	if (form != NULL)
 	{
-		b.executeForm(*form3);
-		std::cout << *form3 << std::endl;
+		b.executeForm(*form);
+		b.signForm(*form);
+		b.executeForm(*form);
+		std::cout << *form << std::endl;
 	}
-	delete form3;
+	delete form;
 }
