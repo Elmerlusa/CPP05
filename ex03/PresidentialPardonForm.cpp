@@ -12,7 +12,7 @@
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(void): AForm("DefaultName", MIN_GRADE, MIN_GRADE), _target("nobody")
+PresidentialPardonForm::PresidentialPardonForm(void): AForm("DefaultName", 25, 5), _target("nobody")
 {
 }
 

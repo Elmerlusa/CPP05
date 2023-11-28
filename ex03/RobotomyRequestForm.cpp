@@ -12,7 +12,7 @@
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(void): AForm("DefaultName", MIN_GRADE, MIN_GRADE), _target("nobody")
+RobotomyRequestForm::RobotomyRequestForm(void): AForm("DefaultName", 72, 45), _target("nobody")
 {
 	std::srand((unsigned)time(NULL));
 }
@@ -40,10 +40,9 @@ const std::string&	RobotomyRequestForm::getTarget(void) const
 
 void	RobotomyRequestForm::realExecute(void) const
 {
-	std::cout << "RATATATATATATATATATATATA... ";
 	std::rand();
 	if (std::rand() % 2)
-		std::cout << this->_target << " has been succesfully robotomized" << std::endl;
+		std::cout << "RATATATATATATATATATATATA... " << this->_target << " has been succesfully robotomized" << std::endl;
 	else
 		std::cout << "Robotomy has failed" << std::endl;
 }

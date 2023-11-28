@@ -14,7 +14,7 @@
 
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(void): AForm("DefaultName", MIN_GRADE, MIN_GRADE), _target("nobody")
+ShrubberyCreationForm::ShrubberyCreationForm(void): AForm("DefaultName", 145, 137), _target("nobody")
 {
 }
 
